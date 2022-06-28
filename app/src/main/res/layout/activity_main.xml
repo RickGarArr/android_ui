@@ -14,8 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:titleTextColor="@color/color_on_primary"
         app:subtitleTextColor="@color/color_on_primary"
+        android:theme="@style/ToolbarTheme"
         android:background="@color/primary_color">
-
 
     </androidx.appcompat.widget.Toolbar>
 

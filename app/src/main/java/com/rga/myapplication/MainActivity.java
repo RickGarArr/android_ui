@@ -1,12 +1,20 @@
 package com.rga.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private Toolbar mainActivityToolbar;
 
@@ -25,7 +33,30 @@ public class MainActivity extends AppCompatActivity {
     private void configToolbar() {
         setSupportActionBar(mainActivityToolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Hola Ricardo");
-        actionBar.setSubtitle("Cómo estás?");
+        actionBar.setTitle(R.string.app_name);
+        actionBar.setElevation(24F);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings_option:
+                Log.i(TAG, "onOptionsItemSelected: settings");
+                return true;
+            case R.id.action_1:
+                Log.i(TAG, "onOptionsItemSelected: action 1");
+                return true;
+            case R.id.action_2:
+                Log.i(TAG, "onOptionsItemSelected: action 2");
+                return true;
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 }
