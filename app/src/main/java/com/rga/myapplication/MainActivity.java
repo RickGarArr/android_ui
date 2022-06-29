@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
+
+import com.rga.myapplication.ui.activities.SecondActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mainActivityToolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.app_name);
-        actionBar.setElevation(24F);
+        actionBar.setElevation(12);
     }
 
     @Override
@@ -48,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.settings_option:
-                Log.i(TAG, "onOptionsItemSelected: settings");
+                Intent intentToSecondActivity = new Intent(this, SecondActivity.class);
+                startActivity(intentToSecondActivity);
                 return true;
             case R.id.action_1:
                 Log.i(TAG, "onOptionsItemSelected: action 1");
