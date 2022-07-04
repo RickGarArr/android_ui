@@ -11,12 +11,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.widget.ActionMenuView;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.rga.myapplication.ui.activities.SecondActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private Toolbar mainActivityToolbar;
+    private View mainActivityView;
+    private Snackbar snackbar;
+    private Button buttonToSnackBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +36,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bindView();
         configToolbar();
+        configSnackBar();
+        configView();
     }
 
     private void bindView() {
         mainActivityToolbar = findViewById(R.id.activity_main_toolbar);
+        mainActivityView = findViewById(R.id.activity_main);
+        buttonToSnackBar = findViewById(R.id.button_show_snackbar);
     }
 
     private void configToolbar() {
@@ -42,6 +51,23 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.app_name);
         actionBar.setElevation(12);
+    }
+
+    private void configSnackBar() {
+        snackbar = Snackbar.make(mainActivityView, "This is my first Snack Bar", Snackbar.LENGTH_SHORT);
+        snackbar.setAction(R.string.snackbar_action_dismiss, view -> snackbar.dismiss());
+        snackbar.setActionTextColor(getColor(android.R.color.holo_red_dark));
+        snackbar.setBackgroundTint(getColor(android.R.color.black));
+    }
+
+    private void configView() {
+        buttonToSnackBar.setOnClickListener(view -> {
+            if (snackbar.isShown()) {
+                snackbar.dismiss();
+            } else {
+                snackbar.show();
+            }
+        });
     }
 
     @Override
@@ -73,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_2:
                 Log.i(TAG, "onOptionsItemSelected: action 2");
                 return true;
-            default: return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
