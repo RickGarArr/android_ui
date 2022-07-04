@@ -10,7 +10,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
+import androidx.appcompat.widget.ActionMenuView;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.rga.myapplication.ui.activities.SecondActivity;
@@ -44,7 +48,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_activity_menu, menu);
+        configSearchOption(menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void configSearchOption(Menu menu) {
+        MenuItem searchItem = menu.findItem(R.id.search_action);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        searchEditText.setTextColor(getColor(R.color.color_on_primary));
+        searchItem.setOnActionExpandListener(this.onActionExpandListener());
     }
 
     @Override
@@ -54,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentToSecondActivity = new Intent(this, SecondActivity.class);
                 startActivity(intentToSecondActivity);
                 return true;
-            case R.id.action_1:
+            case R.id.share_action:
                 Log.i(TAG, "onOptionsItemSelected: action 1");
                 return true;
             case R.id.action_2:
@@ -62,5 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
+    }
+
+    private MenuItem.OnActionExpandListener onActionExpandListener() {
+        return new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                return true;
+            }
+        };
     }
 }

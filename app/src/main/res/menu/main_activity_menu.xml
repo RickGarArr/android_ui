@@ -3,17 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/search_action"
+        android:icon="@drawable/ic_search"
+        android:title="@string/menu_search_acction"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/share_action"
+        android:icon="@drawable/ic_share"
+        android:title="@string/menu_action_1_text"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"/>
+
+    <item
         android:id="@+id/settings_option"
         android:icon="@drawable/ic_settings"
         android:title="@string/menu_settings_acction"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/action_1"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/menu_action_1_text"
         app:showAsAction="never"/>
-
     <item
         android:id="@+id/action_2"
         android:icon="@drawable/ic_settings"

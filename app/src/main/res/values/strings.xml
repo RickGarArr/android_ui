@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="menu_settings_acction">Setting</string>
-    <string name="menu_action_1_text">Action 1</string>
+    <string name="menu_settings_acction">Settings</string>
+    <string name="menu_search_acction">Search</string>
+    <string name="menu_action_1_text">Share</string>
     <string name="menu_action_2_text">Action 2</string>
 </resources>
