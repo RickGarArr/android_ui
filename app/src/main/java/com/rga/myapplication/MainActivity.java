@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bindView();
         configToolbar();
-//        configSnackBar();
-        configViewSnackBar();
+        configSnackBar();
+//        configViewSnackBar();
         configView();
     }
 
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         snackbar = Snackbar.make(mainActivityView, "This is my first Snack Bar", Snackbar.LENGTH_SHORT);
         snackbar.setAction(R.string.snackbar_action_dismiss, view -> snackbar.dismiss());
         snackbar.setActionTextColor(getColor(android.R.color.holo_red_dark));
+        TextView snackbarText = snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
+        snackbarText.setText(getResources().getString(R.string.snackbar_text));
+        snackbarText.setOnClickListener(view -> snackbarText.setTextColor(getColor(android.R.color.holo_blue_light)));
         snackbar.setBackgroundTint(getColor(android.R.color.black));
     }
 
