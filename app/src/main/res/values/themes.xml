@@ -18,4 +18,9 @@
         <item name="colorControlNormal">@color/color_on_primary</item>
         <item name="actionMenuTextColor">@color/color_on_primary</item>
     </style>
+    
+    <style name="Theme.MyApplication.NoStatusBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 </resources>
