@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ligth_gray"
+    android:paddingHorizontal="8dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="8">
+
+        <TextView
+            android:id="@+id/snackbar_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/color_on_secondary"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_side"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/snackbar_button_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:theme="@style/ShapeAppearanceOverlay.Material3.Button"
+            android:text="Test"/>
+
+        <Button
+            android:id="@+id/snackbar_button_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:theme="@style/ShapeAppearanceOverlay.Material3.Button"
+            android:text="Test"/>
+
+    </LinearLayout>
+
+</LinearLayout>

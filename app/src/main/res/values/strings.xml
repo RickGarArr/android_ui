@@ -4,5 +4,6 @@
     <string name="menu_search_acction">Search</string>
     <string name="menu_action_1_text">Share</string>
     <string name="menu_action_2_text">Action 2</string>
+    <string name="snackbar_text">This is my first personalized snack bar</string>
     <string name="snackbar_action_dismiss">Dismiss</string>
 </resources>

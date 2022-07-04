@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,8 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import androidx.appcompat.widget.ActionMenuView;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bindView();
         configToolbar();
-        configSnackBar();
+//        configSnackBar();
+        configViewSnackBar();
         configView();
     }
 
@@ -58,6 +60,23 @@ public class MainActivity extends AppCompatActivity {
         snackbar.setAction(R.string.snackbar_action_dismiss, view -> snackbar.dismiss());
         snackbar.setActionTextColor(getColor(android.R.color.holo_red_dark));
         snackbar.setBackgroundTint(getColor(android.R.color.black));
+    }
+
+    private void configViewSnackBar() {
+        snackbar = Snackbar.make(mainActivityView, "", Snackbar.LENGTH_INDEFINITE);
+        snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+        snackbar.getView().setPadding(0,0,0,0);
+        View customSnackView = getLayoutInflater().inflate(R.layout.snackbar_personalized, null);
+        TextView textView = customSnackView.findViewById(R.id.snackbar_text);
+        textView.setText(getString(R.string.snackbar_text));
+        Button button1 = customSnackView.findViewById(R.id.snackbar_button_1);
+        button1.setText(getString(R.string.menu_action_1_text));
+        button1.setOnClickListener(view -> Log.i(TAG, "configViewSnackBar: " + view.getId()));
+        Button button2 = customSnackView.findViewById(R.id.snackbar_button_2);
+        button2.setText(getString(R.string.snackbar_action_dismiss));
+        button2.setOnClickListener(view -> Log.i(TAG, "configViewSnackBar: " + view.getId()));
+        Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        snackbarLayout.addView(customSnackView);
     }
 
     private void configView() {
